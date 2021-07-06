@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>返回顶部</title>
+        <style>
+            body, html {
+                margin: 0;
+                padding: 0;
+                scroll-behavior: smooth;
+            }
+            .container {
+                height: 2000px;
+            }
+            #goTop {
+                display: none;
+                position: fixed;
+                right: 100px;
+                bottom: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <button id="goTop">返回顶部</button>
+        </div>
+    </body>
+    <script>
+        // 逻辑：1、当页面滚动到距离顶部400px的位置，显示回到顶部的按钮
+        // 2、点击回到顶部按钮，页面滚动页面顶部，并隐藏按钮
+        var goTop = document.getElementById("goTop");
+        window.onscroll = function () {
+            var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+            if (scrollTop >= 400) {
+                goTop.style.display = 'block';
+            } else {
+                goTop.style.display = 'none';
+            }
+        }
+
+        goTop.addEventListener('click', function () {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }, false)
+    </script>
+</html>
